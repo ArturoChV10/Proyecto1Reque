@@ -17,8 +17,17 @@ public class homeMenu extends javax.swing.JFrame {
         initComponents();
         String home = "<HTML><u>Home</u></HTML>";
         lblHome.setText(home);
-        String help = "<HTML><u>Home</u></HTML>";
+        String help = "<HTML><u>Help</u></HTML>";
         lblHelp.setText(help);
+        
+        waitingPanel waiting = new waitingPanel();
+        waiting.setSize(730,430);
+        waiting.setLocation(0,0);
+        
+        mainPanel.removeAll();
+        mainPanel.add(waiting, BorderLayout.CENTER);
+        mainPanel.revalidate();
+        mainPanel.repaint();
     }
 
     /**
@@ -52,8 +61,8 @@ public class homeMenu extends javax.swing.JFrame {
         lblMinimize = new javax.swing.JLabel();
         lblIcon = new javax.swing.JLabel();
         lblHome = new javax.swing.JLabel();
-        lblBanner = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        mainPanel = new javax.swing.JPanel();
+        lblBanner = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -382,23 +391,23 @@ public class homeMenu extends javax.swing.JFrame {
         lblHome.setText("Home");
         bg.add(lblHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 50, 50));
 
-        lblBanner.setBackground(new java.awt.Color(247, 255, 235));
+        mainPanel.setBackground(new java.awt.Color(247, 255, 235));
 
-        javax.swing.GroupLayout lblBannerLayout = new javax.swing.GroupLayout(lblBanner);
-        lblBanner.setLayout(lblBannerLayout);
-        lblBannerLayout.setHorizontalGroup(
-            lblBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 730, Short.MAX_VALUE)
         );
-        lblBannerLayout.setVerticalGroup(
-            lblBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 430, Short.MAX_VALUE)
         );
 
-        bg.add(lblBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 730, 430));
+        bg.add(mainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, 730, 430));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("D:\\chava\\Documents\\NetBeansProjects\\proyectoReque\\images\\banner.png")); // NOI18N
-        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 950, 50));
+        lblBanner.setIcon(new javax.swing.ImageIcon("D:\\chava\\Documents\\NetBeansProjects\\proyectoReque\\images\\banner.png")); // NOI18N
+        bg.add(lblBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 950, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -508,10 +517,10 @@ public class homeMenu extends javax.swing.JFrame {
         p1.setSize(730,430);
         p1.setLocation(0,0);
         
-        lblBanner.removeAll();
-        lblBanner.add(p1, BorderLayout.CENTER);
-        lblBanner.revalidate();
-        lblBanner.repaint();
+        mainPanel.removeAll();
+        mainPanel.add(p1, BorderLayout.CENTER);
+        mainPanel.revalidate();
+        mainPanel.repaint();
         
     }//GEN-LAST:event_lblNewAppointmentMouseClicked
 
@@ -580,9 +589,8 @@ public class homeMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblAccount;
-    private javax.swing.JPanel lblBanner;
+    private javax.swing.JLabel lblBanner;
     private javax.swing.JLabel lblCheckAppointmets;
     private javax.swing.JLabel lblDeleteAppointment;
     private javax.swing.JLabel lblDispose;
@@ -593,6 +601,7 @@ public class homeMenu extends javax.swing.JFrame {
     private javax.swing.JLabel lblLogOut;
     private javax.swing.JLabel lblMinimize;
     private javax.swing.JLabel lblNewAppointment;
+    private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel optionsPanel;
     private javax.swing.JPanel panelAccount;
     private javax.swing.JPanel panelCheckAppointment;
