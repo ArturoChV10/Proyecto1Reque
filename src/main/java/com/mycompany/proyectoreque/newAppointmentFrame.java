@@ -4,6 +4,9 @@
  */
 package com.mycompany.proyectoreque;
 
+import java.awt.BorderLayout;
+import java.util.Date;
+
 /**
  *
  * @author chava
@@ -16,6 +19,20 @@ public class newAppointmentFrame extends javax.swing.JPanel {
     public newAppointmentFrame() {
         initComponents();
     }
+    
+    private String getDay(Date fecha) {
+        if(fecha != null) {
+            char fecha2 = fecha.toString().charAt(8);
+            char fecha3 = fecha.toString().charAt(9);
+            StringBuilder fechaA = new StringBuilder();
+            fechaA.append(fecha2);
+            fechaA.append(fecha3);
+            String fechaB = fechaA.toString();     
+
+            return fechaB;
+        }
+        return null;   
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,8 +43,23 @@ public class newAppointmentFrame extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel7 = new javax.swing.JPanel();
         bg = new javax.swing.JPanel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jCalendar = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
+        panelHoras = new javax.swing.JPanel();
+        btnConfirm = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(580, 430));
@@ -36,29 +68,93 @@ public class newAppointmentFrame extends javax.swing.JPanel {
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(30, 140, 200));
+        jLabel1.setText("Select a date for the appointment:");
+
+        panelHoras.setBackground(new java.awt.Color(244, 244, 246));
+
+        javax.swing.GroupLayout panelHorasLayout = new javax.swing.GroupLayout(panelHoras);
+        panelHoras.setLayout(panelHorasLayout);
+        panelHorasLayout.setHorizontalGroup(
+            panelHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 718, Short.MAX_VALUE)
+        );
+        panelHorasLayout.setVerticalGroup(
+            panelHorasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 330, Short.MAX_VALUE)
+        );
+
+        btnConfirm.setForeground(new java.awt.Color(30, 140, 200));
+        btnConfirm.setText("Confirm");
+        btnConfirm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
-                .addGap(319, 319, 319)
-                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(326, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelHoras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(bgLayout.createSequentialGroup()
+                        .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, bgLayout.createSequentialGroup()
+                                .addGap(11, 11, 11)
+                                .addComponent(jLabel1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, bgLayout.createSequentialGroup()
+                                .addComponent(jCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(btnConfirm)))
+                        .addGap(0, 417, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bgLayout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(290, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConfirm))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addComponent(panelHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 430));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmActionPerformed
+        Date fecha = jCalendar.getDate();
+        if(fecha != null){
+            //String fecha4 = fecha.toString();
+        String dia = getDay(fecha);
+        
+        horasFrame page1 = new horasFrame(dia);
+        page1.setSize(718,330);
+        page1.setLocation(0,0);
+        
+        panelHoras.removeAll();
+        panelHoras.add(page1, BorderLayout.CENTER);
+        panelHoras.revalidate();
+        panelHoras.repaint();
+        }
+    }//GEN-LAST:event_btnConfirmActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JButton btnConfirm;
+    private com.toedter.calendar.JDateChooser jCalendar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel panelHoras;
     // End of variables declaration//GEN-END:variables
 }

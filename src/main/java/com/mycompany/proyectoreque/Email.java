@@ -2,6 +2,9 @@
 package com.mycompany.proyectoreque;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.SwingUtilities;
 
 /**
@@ -16,6 +19,43 @@ public class Email extends javax.swing.JFrame {
     public Email() {
         initComponents();
     }
+    
+     public boolean validarCorreo(String correo) {
+        
+        
+        // Expresión regular para validar correos electrónicos
+        String regexCorreo = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
+        Pattern pattern = Pattern.compile(regexCorreo);
+        Matcher matcher = pattern.matcher(correo);
+        
+        String user = "arturo@gmail.com";
+        
+        // Si está vacío
+        if (correo.isEmpty()) {
+            lblCantAccess.setText("Enter an email adress");
+            lblCantAccess.setForeground(Color.RED);
+            return false;
+        }
+        
+        // Si no coincide con la expresión regular
+        if (!matcher.matches()) {
+            lblCantAccess.setText("Invalid email");
+            lblCantAccess.setForeground(Color.RED);
+            return false;
+        }
+        
+        if (!correo.equals(user)) {
+            lblCantAccess.setText("Create an account");
+            lblCantAccess.setForeground(Color.RED);
+            return false;
+        }
+        
+        // Si es válido, limpiar el mensaje de error
+        lblCantAccess.setText("Can't access your account?");
+        lblCantAccess.setForeground(Color.BLACK);
+        return true;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -130,7 +170,10 @@ public class Email extends javax.swing.JFrame {
         LogFrame logFrame = (LogFrame)SwingUtilities.getWindowAncestor(this);
         logFrame.showPanel("password");
         */
-        Password password = new Password(txtEmail.getText());
+        String correo = txtEmail.getText().trim();
+        boolean valido = validarCorreo(correo);
+        if (valido == true){
+            Password password = new Password(txtEmail.getText());
         password.setSize(400,300);
         password.setLocation(0,0);
         
@@ -138,6 +181,7 @@ public class Email extends javax.swing.JFrame {
         mainPanel.add(password, BorderLayout.CENTER);
         mainPanel.revalidate();
         mainPanel.repaint();
+        }
     }//GEN-LAST:event_btnNextActionPerformed
 
     /**

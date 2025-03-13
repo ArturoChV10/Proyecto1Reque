@@ -1,6 +1,7 @@
 
 package com.mycompany.proyectoreque;
 
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -17,6 +18,31 @@ public class Password extends javax.swing.JPanel {
         initComponents();
         lblEmail.setText(email);
     }
+    
+     public boolean validarContraseña(String password) {
+      
+        String userPassword = "1234";
+        
+        // Si está vacío
+        if (password.isEmpty()) {
+            lblForgot.setText("Enter your password");
+            lblForgot.setForeground(Color.RED);
+            return false;
+        }
+
+        
+        if (!password.equals(userPassword)) {
+            lblForgot.setText("Invalid password");
+            lblForgot.setForeground(Color.RED);
+            return false;
+        }
+        
+        // Si es válido, limpiar el mensaje de error
+        lblForgot.setText("I forgot my password");
+        lblForgot.setForeground(Color.BLACK);
+        return true;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,6 +76,11 @@ public class Password extends javax.swing.JPanel {
 
         lblForgot.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblForgot.setText("I forgot my password");
+        lblForgot.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                lblForgotFocusGained(evt);
+            }
+        });
         add(lblForgot, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 175, -1, -1));
 
         lblEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -81,10 +112,19 @@ public class Password extends javax.swing.JPanel {
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
+        String password = txtPassword.getText().trim();
+        boolean valido = validarContraseña(password);
+        if (valido == true){
+            ((JFrame) SwingUtilities.getWindowAncestor(this)).dispose();
         String[] args = null;
         homeMenu.main(args);
+        }
     }//GEN-LAST:event_btnNextActionPerformed
+
+    private void lblForgotFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblForgotFocusGained
+        lblForgot.setText("I forgot my password");
+        lblForgot.setForeground(Color.BLACK);
+    }//GEN-LAST:event_lblForgotFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
