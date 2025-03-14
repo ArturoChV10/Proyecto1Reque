@@ -389,6 +389,11 @@ public class homeMenu extends javax.swing.JFrame {
         lblHome.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         lblHome.setForeground(new java.awt.Color(30, 140, 200));
         lblHome.setText("Home");
+        lblHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblHomeMouseClicked(evt);
+            }
+        });
         bg.add(lblHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 50, 50));
 
         mainPanel.setBackground(new java.awt.Color(247, 255, 235));
@@ -432,6 +437,15 @@ public class homeMenu extends javax.swing.JFrame {
 
     private void lblDeleteAppointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDeleteAppointmentMouseClicked
         lblDeleteAppointment.setText("Delete Appointment");
+        
+        deleteAppointmentFrame p1 = new deleteAppointmentFrame();
+        p1.setSize(730,430);
+        p1.setLocation(0,0);
+        
+        mainPanel.removeAll();
+        mainPanel.add(p1, BorderLayout.CENTER);
+        mainPanel.revalidate();
+        mainPanel.repaint();
     }//GEN-LAST:event_lblDeleteAppointmentMouseClicked
 
     private void lblDeleteAppointmentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDeleteAppointmentMouseExited
@@ -447,6 +461,15 @@ public class homeMenu extends javax.swing.JFrame {
 
     private void lblEditAppointmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEditAppointmentMouseClicked
         lblEditAppointment.setText("Edit Appointment");
+        
+        editAppointmentFrame p1 = new editAppointmentFrame();
+        p1.setSize(730,430);
+        p1.setLocation(0,0);
+        
+        mainPanel.removeAll();
+        mainPanel.add(p1, BorderLayout.CENTER);
+        mainPanel.revalidate();
+        mainPanel.repaint();
     }//GEN-LAST:event_lblEditAppointmentMouseClicked
 
     private void lblEditAppointmentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEditAppointmentMouseExited
@@ -462,6 +485,15 @@ public class homeMenu extends javax.swing.JFrame {
 
     private void lblCheckAppointmetsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCheckAppointmetsMouseClicked
         lblCheckAppointmets.setText("Check Appointments");
+        
+        checkAppointmentFrame p1 = new checkAppointmentFrame();
+        p1.setSize(730,430);
+        p1.setLocation(0,0);
+        
+        mainPanel.removeAll();
+        mainPanel.add(p1, BorderLayout.CENTER);
+        mainPanel.revalidate();
+        mainPanel.repaint();
     }//GEN-LAST:event_lblCheckAppointmetsMouseClicked
 
     private void lblCheckAppointmetsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCheckAppointmetsMouseExited
@@ -477,6 +509,15 @@ public class homeMenu extends javax.swing.JFrame {
 
     private void lblAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccountMouseClicked
         lblAccount.setText("Account");
+        
+        AccountFrame p1 = new AccountFrame();
+        p1.setSize(730,430);
+        p1.setLocation(0,0);
+        
+        mainPanel.removeAll();
+        mainPanel.add(p1, BorderLayout.CENTER);
+        mainPanel.revalidate();
+        mainPanel.repaint();
     }//GEN-LAST:event_lblAccountMouseClicked
 
     private void lblAccountMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAccountMouseExited
@@ -492,6 +533,10 @@ public class homeMenu extends javax.swing.JFrame {
 
     private void lblLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogOutMouseClicked
         lblLogOut.setText("Log Out");
+        
+        this.dispose();
+        String[] args = null;
+        Email.main(args);
     }//GEN-LAST:event_lblLogOutMouseClicked
 
     private void lblLogOutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogOutMouseExited
@@ -551,6 +596,17 @@ public class homeMenu extends javax.swing.JFrame {
     private void lblMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizeMouseClicked
         this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_lblMinimizeMouseClicked
+
+    private void lblHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeMouseClicked
+        waitingPanel waiting = new waitingPanel();
+        waiting.setSize(730,430);
+        waiting.setLocation(0,0);
+        
+        mainPanel.removeAll();
+        mainPanel.add(waiting, BorderLayout.CENTER);
+        mainPanel.revalidate();
+        mainPanel.repaint();
+    }//GEN-LAST:event_lblHomeMouseClicked
 
     /**
      * @param args the command line arguments

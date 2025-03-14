@@ -9,6 +9,7 @@ public class horasFrame extends javax.swing.JPanel {
 
     /**
      * Creates new form NewJPanel
+     * @param dia
      */
     public horasFrame(String dia) {
         initComponents();
