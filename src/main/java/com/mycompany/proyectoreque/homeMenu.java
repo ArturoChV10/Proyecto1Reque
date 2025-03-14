@@ -402,14 +402,14 @@ public class homeMenu extends javax.swing.JFrame {
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 740, Short.MAX_VALUE)
+            .addGap(0, 730, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 430, Short.MAX_VALUE)
         );
 
-        bg.add(mainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 740, 430));
+        bg.add(mainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 730, 430));
 
         lblBanner.setIcon(new javax.swing.ImageIcon("D:\\chava\\Documents\\NetBeansProjects\\proyectoReque\\images\\banner.png")); // NOI18N
         bg.add(lblBanner, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 950, 50));
