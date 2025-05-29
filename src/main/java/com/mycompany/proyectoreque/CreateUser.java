@@ -5,18 +5,19 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
  *
  * @author Julio David
  */
-public class Email extends javax.swing.JFrame {
+public class CreateUser extends javax.swing.JFrame {
 
     /**
      * Creates new form Email2
      */
-    public Email() {
+    public CreateUser() {
         initComponents();
     }
     
@@ -28,31 +29,18 @@ public class Email extends javax.swing.JFrame {
         Pattern pattern = Pattern.compile(regexCorreo);
         Matcher matcher = pattern.matcher(correo);
         
-        String user = "arturo@gmail.com";
-        
         // Si está vacío
         if (correo.isEmpty()) {
-            lblCantAccess.setText("Enter an email adress");
-            lblCantAccess.setForeground(Color.RED);
+            JOptionPane.showMessageDialog(null, "There's information missing to create appointment", "Warning", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         
         // Si no coincide con la expresión regular
         if (!matcher.matches()) {
-            lblCantAccess.setText("Invalid email");
-            lblCantAccess.setForeground(Color.RED);
+            JOptionPane.showMessageDialog(null, "There's invalid characters in your email", "Warning", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         
-        if (!correo.equals(user)) {
-            lblCantAccess.setText("Create an account");
-            lblCantAccess.setForeground(Color.RED);
-            return false;
-        }
-        
-        // Si es válido, limpiar el mensaje de error
-        lblCantAccess.setText("Can't access your account?");
-        lblCantAccess.setForeground(Color.BLACK);
         return true;
     }
 
@@ -70,9 +58,10 @@ public class Email extends javax.swing.JFrame {
         lblLogo = new javax.swing.JLabel();
         lblSignIn = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        lblCreateAccount = new javax.swing.JLabel();
-        lblCantAccess = new javax.swing.JLabel();
-        btnNext = new javax.swing.JButton();
+        btnCreate = new javax.swing.JButton();
+        lblSignIn1 = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JTextField();
+        btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,8 +72,8 @@ public class Email extends javax.swing.JFrame {
         lblLogo.setIcon(new javax.swing.ImageIcon("D:\\chava\\Documents\\NetBeansProjects\\proyectoReque\\images\\logotipo.png")); // NOI18N
         lblLogo.setText("Medict");
 
-        lblSignIn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblSignIn.setText("Sign In");
+        lblSignIn.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblSignIn.setText("Email Address");
 
         txtEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtEmail.addActionListener(new java.awt.event.ActionListener() {
@@ -93,30 +82,33 @@ public class Email extends javax.swing.JFrame {
             }
         });
 
-        lblCreateAccount.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblCreateAccount.setText("No account? Create one");
-        lblCreateAccount.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblCreateAccountMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblCreateAccountMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblCreateAccountMouseExited(evt);
+        btnCreate.setBackground(new java.awt.Color(0, 51, 255));
+        btnCreate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCreate.setForeground(new java.awt.Color(255, 255, 255));
+        btnCreate.setText("Create");
+        btnCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCreateActionPerformed(evt);
             }
         });
 
-        lblCantAccess.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblCantAccess.setText("Can't access your account?");
+        lblSignIn1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        lblSignIn1.setText("Password");
 
-        btnNext.setBackground(new java.awt.Color(0, 51, 255));
-        btnNext.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnNext.setForeground(new java.awt.Color(255, 255, 255));
-        btnNext.setText("Next");
-        btnNext.addActionListener(new java.awt.event.ActionListener() {
+        txtPassword.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNextActionPerformed(evt);
+                txtPasswordActionPerformed(evt);
+            }
+        });
+
+        btnCancel.setBackground(new java.awt.Color(255, 51, 51));
+        btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCancel.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
             }
         });
 
@@ -124,36 +116,40 @@ public class Email extends javax.swing.JFrame {
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCancel)
+                .addGap(18, 18, 18)
+                .addComponent(btnCreate)
+                .addGap(35, 35, 35))
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblCantAccess)
-                    .addComponent(lblCreateAccount)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSignIn1)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSignIn)
                     .addComponent(lblLogo))
                 .addContainerGap(63, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(17, 17, 17)
                 .addComponent(lblLogo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSignIn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblCreateAccount)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblCantAccess)
+                .addComponent(lblSignIn1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNext)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,7 +171,7 @@ public class Email extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
 
-    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+    private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         /*
         LogFrame logFrame = (LogFrame)SwingUtilities.getWindowAncestor(this);
         logFrame.showPanel("password");
@@ -183,30 +179,27 @@ public class Email extends javax.swing.JFrame {
         String correo = txtEmail.getText().trim();
         boolean valido = validarCorreo(correo);
         if (valido == true){
-            Password password = new Password(txtEmail.getText());
-            password.setSize(400,300);
-            password.setLocation(0,0);
-
-            mainPanel.removeAll();
-            mainPanel.add(password, BorderLayout.CENTER);
-            mainPanel.revalidate();
-            mainPanel.repaint();
+            String password = txtPassword.getText();
+            if(password != "") {
+                SaveUsers save = new SaveUsers();
+                save.saveUser(correo, password);
+                JOptionPane.showConfirmDialog(null, "The new user has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
+                Email emailWindow = new Email();
+                this.dispose();
+                emailWindow.setVisible(true);
+            }
         }
-    }//GEN-LAST:event_btnNextActionPerformed
+    }//GEN-LAST:event_btnCreateActionPerformed
 
-    private void lblCreateAccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCreateAccountMouseClicked
-        CreateUser create = new CreateUser();
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        Email emailWindow = new Email();
         this.dispose();
-        create.setVisible(true);
-    }//GEN-LAST:event_lblCreateAccountMouseClicked
-
-    private void lblCreateAccountMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCreateAccountMouseEntered
-        lblCreateAccount.setForeground(Color.blue);
-    }//GEN-LAST:event_lblCreateAccountMouseEntered
-
-    private void lblCreateAccountMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCreateAccountMouseExited
-        lblCreateAccount.setForeground(Color.BLACK);
-    }//GEN-LAST:event_lblCreateAccountMouseExited
+        emailWindow.setVisible(true);
+    }//GEN-LAST:event_btnCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,14 +218,22 @@ public class Email extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Email.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Email.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Email.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Email.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreateUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -245,18 +246,19 @@ public class Email extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Email().setVisible(true);
+                new CreateUser().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnNext;
-    private javax.swing.JLabel lblCantAccess;
-    private javax.swing.JLabel lblCreateAccount;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnCreate;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblSignIn;
+    private javax.swing.JLabel lblSignIn1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables
 }

@@ -302,9 +302,9 @@ public class homeMenu extends javax.swing.JFrame {
         lblHelp.setText("Help");
         bg.add(lblHelp, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 40, 50));
 
-        toolsBar.setBackground(new java.awt.Color(0, 0, 0));
+        toolsBar.setBackground(new java.awt.Color(51, 51, 51));
 
-        panelDispose.setBackground(new java.awt.Color(0, 0, 0));
+        panelDispose.setBackground(new java.awt.Color(51, 51, 51));
 
         lblDispose.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblDispose.setForeground(new java.awt.Color(255, 255, 255));
@@ -333,7 +333,7 @@ public class homeMenu extends javax.swing.JFrame {
             .addComponent(lblDispose, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
         );
 
-        panelMinimize.setBackground(new java.awt.Color(0, 0, 0));
+        panelMinimize.setBackground(new java.awt.Color(51, 51, 51));
 
         lblMinimize.setFont(new java.awt.Font("Wide Latin", 0, 12)); // NOI18N
         lblMinimize.setForeground(new java.awt.Color(255, 255, 255));
@@ -355,7 +355,7 @@ public class homeMenu extends javax.swing.JFrame {
         panelMinimize.setLayout(panelMinimizeLayout);
         panelMinimizeLayout.setHorizontalGroup(
             panelMinimizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblMinimize, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+            .addComponent(lblMinimize, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
         );
         panelMinimizeLayout.setVerticalGroup(
             panelMinimizeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -575,7 +575,8 @@ public class homeMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_lblDisposeMouseEntered
 
     private void lblDisposeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDisposeMouseExited
-        panelDispose.setBackground(Color.BLACK);
+        Color gray = new Color(51,51,51);
+        panelDispose.setBackground(gray);
         lblDispose.setForeground(Color.WHITE);
     }//GEN-LAST:event_lblDisposeMouseExited
 
@@ -589,7 +590,8 @@ public class homeMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_lblMinimizeMouseEntered
 
     private void lblMinimizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizeMouseExited
-        panelMinimize.setBackground(Color.BLACK);
+        Color gray = new Color(51,51,51);
+        panelMinimize.setBackground(gray);
         lblMinimize.setForeground(Color.WHITE);
     }//GEN-LAST:event_lblMinimizeMouseExited
 
