@@ -31,7 +31,7 @@ public class CreateUser extends javax.swing.JFrame {
         
         // Si está vacío
         if (correo.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "There's information missing to create appointment", "Warning", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "There's information missing to create an user", "Warning", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         
