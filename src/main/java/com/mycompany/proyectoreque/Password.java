@@ -22,6 +22,7 @@ public class Password extends javax.swing.JPanel {
      public boolean validarContraseña(String password) {
       
         String userPassword = "1234";
+        CheckUsers validacion = new CheckUsers();
         
         // Si está vacío
         if (password.isEmpty()) {
@@ -30,8 +31,16 @@ public class Password extends javax.swing.JPanel {
             return false;
         }
 
-        
+        /*
         if (!password.equals(userPassword)) {
+            lblForgot.setText("Invalid password");
+            lblForgot.setForeground(Color.RED);
+            return false;
+        }
+        */
+        
+        if(!validacion.validateUser(lblEmail.getText(), password)) {
+            System.out.println("CONTRASEÑA INVALIDA");
             lblForgot.setText("Invalid password");
             lblForgot.setForeground(Color.RED);
             return false;

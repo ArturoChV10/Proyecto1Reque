@@ -1,2 +1,3 @@
-Juan@gmail.com;1234
-testing@gmail.com;1234
+encriptado@gmail.com;$2a$10$WKcUZsREQtmP5PevmstdeOhHoF6IQCkC0WleL7aAwUq.rqtIJoIMu
+arturo@gmail.com;$2a$10$wXl5V452cqEg2Kaopo90YehsN5I6dmfdOpx6O04XgfiD05nndG7KW
+testing@gmail.com;$2a$10$7RHxrM/1Um3nLZ4X.jHlU.1h7.VlQsmHqxTzh2iHLQ1EdtzUVOvUG

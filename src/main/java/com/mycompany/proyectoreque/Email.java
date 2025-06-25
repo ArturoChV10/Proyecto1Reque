@@ -27,8 +27,9 @@ public class Email extends javax.swing.JFrame {
         String regexCorreo = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$";
         Pattern pattern = Pattern.compile(regexCorreo);
         Matcher matcher = pattern.matcher(correo);
+        CheckUsers validacion = new CheckUsers();
         
-        String user = "arturo@gmail.com";
+        String user = "arturo@gmail.com"; // Este usuario lo usábamos para hacer testing
         
         // Si está vacío
         if (correo.isEmpty()) {
@@ -44,12 +45,20 @@ public class Email extends javax.swing.JFrame {
             return false;
         }
         
+        /*
         if (!correo.equals(user)) {
             lblCantAccess.setText("Create an account");
             lblCantAccess.setForeground(Color.RED);
             return false;
         }
+        */
         
+        if(!validacion.validateUsername(correo)) {
+            System.out.println("ESTE CORREO ES INVALIDO");
+            lblCantAccess.setText("Create an account");
+            lblCantAccess.setForeground(Color.RED);
+            return false;
+        }
         // Si es válido, limpiar el mensaje de error
         lblCantAccess.setText("Can't access your account?");
         lblCantAccess.setForeground(Color.BLACK);
