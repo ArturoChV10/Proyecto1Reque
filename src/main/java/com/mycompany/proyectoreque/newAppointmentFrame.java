@@ -6,8 +6,11 @@ package com.mycompany.proyectoreque;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -258,51 +261,68 @@ public class newAppointmentFrame extends javax.swing.JPanel {
                 File nombre_archivo = new File("appointments.txt");
                 FileWriter escritor = new FileWriter(nombre_archivo, true);
                 String cadena;
-                switch (especialidad) {
-                    case 0:
-                        cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "7:30" + "\n";
-
-                        escritor.write(cadena);
-                        escritor.close();
-                        JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
-                        break;
-                    case 1:
-                        cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "9:00" + "\n";
-
-                        escritor.write(cadena);
-                        escritor.close();
-                        JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
-                        break;
-                    case 2:
-                        cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "10:30" + "\n";
-
-                        escritor.write(cadena);
-                        escritor.close();
-                        JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
-                        break;
-                    case 3:
-                        cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "13:30" + "\n";
-
-                        escritor.write(cadena);
-                        escritor.close();
-                        JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
-                        break;
-                    case 4:
-                        cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "15:00" + "\n";
-
-                        escritor.write(cadena);
-                        escritor.close();
-                        JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
-                        break;
-                    case 5:
-                        cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "16:30" + "\n";
-
-                        escritor.write(cadena);
-                        escritor.close();
-                        JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
-                        break;
-                    default:
+                
+                int contador = 0;
+                try (BufferedReader br = new BufferedReader(new FileReader("appointments.txt"))) {
+                    while (br.readLine() != null) {
+                        contador++;
+                    }
                 }
+                if(contador >= 3) {
+                    JOptionPane.showMessageDialog(null, "Appointment's limit has been reached, delete an existent appointment", "Warning", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    Date fechaHoy = new Date();
+                    if(fechaHoy.after(fecha)){
+                        JOptionPane.showMessageDialog(null, "Appointment's date isn't a valid date", "Warning", JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        switch (especialidad) {
+                            case 0:
+                                cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "7:30" + "\n";
+
+                                escritor.write(cadena);
+                                escritor.close();
+                                JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
+                                break;
+                            case 1:
+                                cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "9:00" + "\n";
+
+                                escritor.write(cadena);
+                                escritor.close();
+                                JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
+                                break;
+                            case 2:
+                                cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "10:30" + "\n";
+
+                                escritor.write(cadena);
+                                escritor.close();
+                                JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
+                                break;
+                            case 3:
+                                cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "13:30" + "\n";
+
+                                escritor.write(cadena);
+                                escritor.close();
+                                JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
+                                break;
+                            case 4:
+                                cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "15:00" + "\n";
+
+                                escritor.write(cadena);
+                                escritor.close();
+                                JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
+                                break;
+                            case 5:
+                                cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "16:30" + "\n";
+
+                                escritor.write(cadena);
+                                escritor.close();
+                                JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
+                                break;
+                            default:
+                        }
+                    }
+                }
+                
             }
             catch (Exception e) {
                 System.out.println("Error al escribir");
