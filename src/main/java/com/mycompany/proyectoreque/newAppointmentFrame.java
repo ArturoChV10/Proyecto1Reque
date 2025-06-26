@@ -6,6 +6,8 @@ package com.mycompany.proyectoreque;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -21,6 +23,8 @@ public class newAppointmentFrame extends javax.swing.JPanel {
     public newAppointmentFrame() {
         initComponents();
     }
+    
+    int globalIndex;
     
     private String getDay(Date fecha) {
         if(fecha != null) {
@@ -58,7 +62,6 @@ public class newAppointmentFrame extends javax.swing.JPanel {
         cmbDoctors = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         btnSelectSpeciality = new javax.swing.JButton();
-        btnSelectDoctor = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -163,14 +166,6 @@ public class newAppointmentFrame extends javax.swing.JPanel {
             }
         });
 
-        btnSelectDoctor.setForeground(new java.awt.Color(30, 140, 200));
-        btnSelectDoctor.setText("Select");
-        btnSelectDoctor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectDoctorActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
@@ -197,8 +192,7 @@ public class newAppointmentFrame extends javax.swing.JPanel {
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(cmbDoctors, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSelectSpeciality, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnSelectDoctor, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(btnSelectSpeciality, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(56, 56, 56)
                         .addComponent(panelHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -229,9 +223,7 @@ public class newAppointmentFrame extends javax.swing.JPanel {
                         .addGap(49, 49, 49)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbDoctors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSelectDoctor)))
+                        .addComponent(cmbDoctors, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
@@ -257,9 +249,64 @@ public class newAppointmentFrame extends javax.swing.JPanel {
     }//GEN-LAST:event_btnConfirmActionPerformed
 
     private void btnCreateAppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAppointmentActionPerformed
+        int especialidad = cmbSpeciality.getSelectedIndex();
+        int doctor = cmbDoctors.getSelectedIndex();
         Date fecha = jCalendar.getDate();
+        
         if(fecha != null) {
-            JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
+            try {
+                File nombre_archivo = new File("appointments.txt");
+                FileWriter escritor = new FileWriter(nombre_archivo, true);
+                String cadena;
+                switch (especialidad) {
+                    case 0:
+                        cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "7:30" + "\n";
+
+                        escritor.write(cadena);
+                        escritor.close();
+                        JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
+                        break;
+                    case 1:
+                        cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "9:00" + "\n";
+
+                        escritor.write(cadena);
+                        escritor.close();
+                        JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
+                        break;
+                    case 2:
+                        cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "10:30" + "\n";
+
+                        escritor.write(cadena);
+                        escritor.close();
+                        JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
+                        break;
+                    case 3:
+                        cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "13:30" + "\n";
+
+                        escritor.write(cadena);
+                        escritor.close();
+                        JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
+                        break;
+                    case 4:
+                        cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "15:00" + "\n";
+
+                        escritor.write(cadena);
+                        escritor.close();
+                        JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
+                        break;
+                    case 5:
+                        cadena = especialidad + ";" + doctor + ";" + fecha + ";" + "16:30" + "\n";
+
+                        escritor.write(cadena);
+                        escritor.close();
+                        JOptionPane.showConfirmDialog(null, "The new appointment has been created sucessfully", "Information", JOptionPane.DEFAULT_OPTION);
+                        break;
+                    default:
+                }
+            }
+            catch (Exception e) {
+                System.out.println("Error al escribir");
+            }
         } else {
             JOptionPane.showMessageDialog(null, "There's information missing to create appointment", "Warning", JOptionPane.ERROR_MESSAGE);
         }
@@ -334,17 +381,12 @@ public class newAppointmentFrame extends javax.swing.JPanel {
                     
     }//GEN-LAST:event_btnSelectSpecialityActionPerformed
 
-    private void btnSelectDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectDoctorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSelectDoctorActionPerformed
-
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;
     private javax.swing.JButton btnConfirm;
     private javax.swing.JButton btnCreateAppointment;
-    private javax.swing.JButton btnSelectDoctor;
     private javax.swing.JButton btnSelectSpeciality;
     private javax.swing.JComboBox<String> cmbDoctors;
     private javax.swing.JComboBox<String> cmbSpeciality;
